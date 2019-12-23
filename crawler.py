@@ -56,7 +56,6 @@ class Crawler(object):
         dates = root.xpath('//tr/td[1]/text()')
         titles = root.xpath('//tr/td[2]/a/text()')
         rel_urls = root.xpath('//tr/td[2]/a/@href')
-        print(titles)
         contents = list()
         for date, title, rel_url in zip(dates, titles, rel_urls):
             url = self.base_url + rel_url
