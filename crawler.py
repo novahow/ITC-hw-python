@@ -36,7 +36,7 @@ class Crawler(object):
             start_date (datetime): the start date (included)
             end_date (datetime): the end date (included)
             page (str): the relative url specified page num
-
+        guiguigui
         Returns:
             content (list): a list of date, title, and content
             last_date (datetime): the smallest date in the page
