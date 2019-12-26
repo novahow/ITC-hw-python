@@ -1,5 +1,7 @@
-
-
+from lxml import etree
+import requests
+from datetime import datetime
+from  time import sleep
 
 class Crawler(object):
     def __init__(self,
@@ -11,7 +13,6 @@ class Crawler(object):
     def crawl(self, start_date, end_date,
               date_thres=datetime(2012, 1, 1)):
         """Main crawl API
-
         1. Note that you need to sleep 0.1 seconds for any request.
         2. It is welcome to modify TA's template.
         """
@@ -31,12 +32,11 @@ class Crawler(object):
 
     def crawl_page(self, start_date, end_date, page=''):
         """Parse ten rows of the given page
-
         Parameters:
             start_date (datetime): the start date (included)
             end_date (datetime): the end date (included)
             page (str): the relative url specified page num
-        guigua
+        guiguigui
         Returns:
             content (list): a list of date, title, and content
             last_date (datetime): the smallest date in the page
@@ -48,15 +48,24 @@ class Crawler(object):
         ).content.decode()
         sleep(0.1)
         # TODO: parse the response and get dates, titles and relative url with etree
+        parser = etree.HTML(res)
+        xpath = '/html/body/div[1]/div/div[2]/div/div/div[2]/div/table/tbody'
+        root = parser.xpath(xpath)[0]
+        dates = root.xpath('//tr/td[1]/text()')
+        titles = root.xpath('//tr/td[2]/a/text()')
+        rel_urls = root.xpath('//tr/td[2]/a/@href')
         contents = list()
-        for rel_url in rel_urls:
+        for date, title, rel_url in zip(dates, titles, rel_urls):
+            url = self.base_url + rel_url
+            content = self.crawl_content(url)
+            last_date = strptime(date,'%Y-%m-%d')
+            contents.append(date, title, content)
             # TODO: 1. concatenate relative url to full url
             #       2. for each url call self.crawl_content
             #          to crawl the content
             #       3. append the date, title and content to
             #          contents
         return contents, last_date
-
     def crawl_content(self, url):
         """Crawl the content of given url
 
