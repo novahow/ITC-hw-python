@@ -1,6 +1,7 @@
 from crawler import Crawler
 from args import get_args
-
+import requests
+from datetime import datetime
 
 if __name__ == '__main__':
     args = get_args()
@@ -13,5 +14,5 @@ if __name__ == '__main__':
     		title = title.replace('\"','\"\"')
     		title = title.replace('\n',' ').replace('\r','')
     		title = title.replace('\"','\"\"')
-			out_str = f'{str(date)}, "{title}","{content}"\n'
+    		out_str = f'{str(date)}, "{title}","{content}"\n'
     		f.write(out_str)

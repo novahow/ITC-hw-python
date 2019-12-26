@@ -58,8 +58,8 @@ class Crawler(object):
         for date, title, rel_url in zip(dates, titles, rel_urls):
             url = self.base_url + rel_url
             content = self.crawl_content(url)
-            last_date = strptime(date,'%Y-%m-%d')
-            contents.append(date, title, content)
+            last_date = datetime.strptime(date,'%Y-%m-%d')
+            contents.append([date,title,content])
             # TODO: 1. concatenate relative url to full url
             #       2. for each url call self.crawl_content
             #          to crawl the content
