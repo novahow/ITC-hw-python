@@ -3,6 +3,9 @@
 of National Taiwan University.
 * The program can crawl the message of the announcements of the  
 website of CS department.
+* The program has two necessary arguments, which are the start-date  
+of crawling (--start-date) and the end-date of crawling(--end-date),  
+   and a optional argument, output (--output), which defaults to "output.csv".
 * The program is coded by Python 3.6.6.
 
 # teammate  
