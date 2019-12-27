@@ -68,7 +68,7 @@ class Crawler(object):
         return contents, last_date
     def crawl_content(self, url):
         """Crawl the content of given url
-
+        test test
         For example, if the url is
         https://www.csie.ntu.edu.tw/news/news.php?Sn=15216
         then you are to crawl contents of
